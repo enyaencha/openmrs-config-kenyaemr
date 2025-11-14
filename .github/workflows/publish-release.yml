@@ -1,0 +1,119 @@
+name: Publish Release to KenyaHMIS Releases
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name for the release'
+        required: true
+        type: string
+      release_name:
+        description: 'Name for the release'
+        required: true
+        type: string
+      prerelease:
+        description: 'Mark as pre-release'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  build_and_publish:
+    name: Build and Publish Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout config repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+
+      - name: Run production build script
+        run: |
+          chmod +x ./prod-build.sh
+          echo "n" | ./prod-build.sh
+
+      - name: Create release package directory
+        run: |
+          mkdir -p kenyaemr-release
+          cp -r frontend kenyaemr-release/
+          cp -r configuration kenyaemr-release/
+          cp docker-compose.yml kenyaemr-release/
+          cp README.md kenyaemr-release/
+
+      - name: Create release tarball
+        run: |
+          tar -czvf kenyaemr-${{ github.event.release.tag_name || inputs.tag_name }}.tar.gz kenyaemr-release/
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            echo "RELEASE_NAME=${{ github.event.release.name }}" >> $GITHUB_ENV
+            echo "TAG_NAME=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
+            echo "IS_PRERELEASE=${{ github.event.release.prerelease }}" >> $GITHUB_ENV
+            cat << 'EOF' > release_notes.md
+          ${{ github.event.release.body }}
+
+          ---
+
+          ## Installation Instructions
+
+          1. Download the `kenyaemr-${{ github.event.release.tag_name }}.tar.gz` file
+          2. Extract the archive: `tar -xzvf kenyaemr-${{ github.event.release.tag_name }}.tar.gz`
+          3. Follow the instructions in the README.md file
+
+          ## What's Included
+
+          - Frontend assets (built and ready for deployment)
+          - Backend configuration files
+          - Docker Compose setup
+          - Documentation
+
+          Built from: [openmrs-config-kenyaemr@${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+          EOF
+          else
+            echo "RELEASE_NAME=${{ inputs.release_name }}" >> $GITHUB_ENV
+            echo "TAG_NAME=${{ inputs.tag_name }}" >> $GITHUB_ENV
+            echo "IS_PRERELEASE=${{ inputs.prerelease }}" >> $GITHUB_ENV
+            cat << 'EOF' > release_notes.md
+          Manual release created from openmrs-config-kenyaemr
+
+          ## Installation Instructions
+
+          1. Download the `kenyaemr-${{ inputs.tag_name }}.tar.gz` file
+          2. Extract the archive: `tar -xzvf kenyaemr-${{ inputs.tag_name }}.tar.gz`
+          3. Follow the instructions in the README.md file
+
+          ## What's Included
+
+          - Frontend assets (built and ready for deployment)
+          - Backend configuration files
+          - Docker Compose setup
+          - Documentation
+
+          Built from: [openmrs-config-kenyaemr@${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+          EOF
+          fi
+
+      - name: Create release on kenyahmis-releases repository
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          gh release create "${{ env.TAG_NAME }}" \
+            --repo enyaencha/kenyahmis-releases \
+            --title "${{ env.RELEASE_NAME }}" \
+            --notes-file release_notes.md \
+            ${{ env.IS_PRERELEASE == 'true' && '--prerelease' || '' }} \
+            kenyaemr-${{ env.TAG_NAME }}.tar.gz
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kenyaemr-${{ env.TAG_NAME }}
+          path: kenyaemr-${{ env.TAG_NAME }}.tar.gz
+          retention-days: 90
