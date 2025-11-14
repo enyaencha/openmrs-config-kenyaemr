@@ -73,7 +73,7 @@ jobs:
           uses: aurelien-baudet/workflow-dispatch@v2
           with:
             workflow: Deployin_to_stagin_server
-            repo: palladiumkenya/openmrs-config-kenyaemr
+            repo: enyaencha/openmrs-config-kenyaemr
             token: ${{ secrets.PERSONAL_TOKENS }}
             wait-for-completion: false
   release:

@@ -1,6 +1,6 @@
 # OpenMRS config for the OpenMRS distribution for KenyaEMR
 
-![KenyaEMR OpenMRS 3.x Deployment](https://github.com/palladiumkenya/openmrs-config-kenyaemr/workflows/KenyaEMR%20CI/badge.svg) ![Github All Releases](https://img.shields.io/github/downloads/palladiumkenya/kenyahmis-releases/total.svg) ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/palladiumkenya/kenyahmis-releases/latest/total)
+![KenyaEMR OpenMRS 3.x Deployment](https://github.com/enyaencha/openmrs-config-kenyaemr/workflows/KenyaEMR%20CI/badge.svg) ![Github All Releases](https://img.shields.io/github/downloads/enyaencha/kenyahmis-releases/total.svg) ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/enyaencha/kenyahmis-releases/latest/total)
 
 
 This is the OpenMRS backend configuration for the OpenMRS distribution KenyaEMR.
@@ -42,7 +42,7 @@ Please note that our work on patient-registration and esm-login contain custom c
 
 ## Instructions on setting KenyaEMR using the docker compose file
 
-1. Download the version of KenyaEMR you want to run from github release [latest](https://github.com/palladiumkenya/kenyahmis-releases/releases)
+1. Download the version of KenyaEMR you want to run from github release [latest](https://github.com/enyaencha/kenyahmis-releases/releases)
 
 2. Spin up the docker compose file by running
    ```sh
