@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-label="Liberia themed background">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)" />
+  <g opacity="0.15">
+    <rect x="0" y="120" width="1440" height="40" fill="#c8102e" />
+    <rect x="0" y="200" width="1440" height="40" fill="#c8102e" />
+    <rect x="0" y="280" width="1440" height="40" fill="#c8102e" />
+    <rect x="0" y="360" width="1440" height="40" fill="#c8102e" />
+    <rect x="0" y="440" width="1440" height="40" fill="#c8102e" />
+  </g>
+  <g opacity="0.35">
+    <rect x="120" y="90" width="260" height="260" fill="#0b3d91" rx="24" />
+    <polygon points="250,140 270,200 335,200 280,235 300,295 250,255 200,295 220,235 165,200 230,200" fill="white" />
+  </g>
+  <text x="120" y="650" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#0b3d91" opacity="0.35">LiberiaEMR</text>
+  <text x="120" y="700" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#64748b" opacity="0.6">Powering health services across Liberia</text>
+</svg>

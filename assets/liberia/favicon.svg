@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Liberia favicon">
+  <rect width="64" height="64" fill="white" />
+  <rect y="0" width="64" height="8" fill="#c8102e" />
+  <rect y="16" width="64" height="8" fill="#c8102e" />
+  <rect y="32" width="64" height="8" fill="#c8102e" />
+  <rect y="48" width="64" height="8" fill="#c8102e" />
+  <rect width="28" height="28" fill="#0b3d91" />
+  <polygon points="14,5 17,13 26,13 19,18 22,26 14,20 6,26 9,18 2,13 11,13" fill="white" />
+</svg>
