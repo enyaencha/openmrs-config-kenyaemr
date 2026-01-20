@@ -60,7 +60,7 @@
     "defaultFacilityUrl": "/ws/rest/v1/kenyaemr/default-facility",
     "Translation overrides": {
       "en": {
-        "change": "Move to the next queue"
+        "move": "Assign to next queue"
       }
     }
   },
@@ -169,7 +169,7 @@
     }
   },
   "@openmrs/esm-laboratory-app": {
-    "enableReviewingLabResultsBeforeApproval": true,
+    "enableReviewingLabResultsBeforeApproval": false,
     "extensionSlots": {
       "tests-ordered-actions-slot": {
         "remove": ["pick-lab-request-action"]
@@ -186,19 +186,19 @@
         "sequences": [
           {
             "sequenceLabel": "Birth Dose at Birth or within 2 weeks",
-            "sequenceNumber": 0
-          },
-          {
-            "sequenceLabel": "1st Dose at 6 weeks",
             "sequenceNumber": 1
           },
           {
-            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceLabel": "1st Dose at 6 weeks",
             "sequenceNumber": 2
           },
           {
-            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceLabel": "2nd Dose at 10 weeks",
             "sequenceNumber": 3
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 4
           }
         ]
       },
@@ -496,7 +496,7 @@
         "fd52829a-75d2-4732-8e43-4bff8e5b4f1a",
         "5aa75418-75f8-4ad7-a7d8-8a24f6d3a2bb",
         "e5e9a994-12e2-42c3-9c02-5abdc0fe40e8",
-        "24aedd37-b5be-4e08-8311-3721b8d5100d"
+        "52c3c0c3-05b8-4b26-930e-2a6a54e14c90"
       ]
     }
   },
@@ -685,7 +685,18 @@
           "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
           "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
         ]
+      },
+      {
+        "labTestUuid": "d0a3677f-3b3a-404c-9010-6ec766d7072e",
+        "required": true,
+        "orderReasons": [
+          "167390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
       }
+      
     ],
     "orders": {
       "labOrderableConcepts": ["9a6f10d6-7fc5-4fb7-9428-24ef7b8d01f7"],
@@ -702,7 +713,7 @@
     }
   },
   "@openmrs/esm-patient-orders-app": {
-    "enableReviewingLabResultsBeforeApproval": true,
+    "enableReviewingLabResultsBeforeApproval": false,
     "showReferenceNumberField": false,
     "orderEncounterType": "7df67b83-1b84-4fe2-b1b7-794b4e9bfcc3",
     "extensionSlots": {
@@ -796,7 +807,7 @@
         "configure": {
           "facility-dashboard-link": {
             "Display conditions": {
-              "privileges": ["o3: View Facility Dashboard"]
+              "privileges": ["o3: View DHA Facility Dashboard"]
             }
           },
           "registration-dashboard-link": {
