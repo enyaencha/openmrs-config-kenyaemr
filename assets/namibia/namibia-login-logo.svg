@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220">
+  <rect width="720" height="220" rx="24" fill="#ffffff" stroke="#d6d0c7"/>
+  <g transform="translate(40 40)">
+    <rect width="140" height="140" rx="28" fill="#f2f0ec" stroke="#d6d0c7"/>
+    <circle cx="70" cy="70" r="40" fill="#1f6f6d"/>
+    <rect x="68" y="45" width="4" height="50" rx="2" fill="#ffffff"/>
+    <rect x="45" y="68" width="50" height="4" rx="2" fill="#ffffff"/>
+  </g>
+  <text x="220" y="120" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#1b1b1b">Namibia</text>
+  <text x="220" y="160" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#4a4a4a">EMR</text>
+</svg>

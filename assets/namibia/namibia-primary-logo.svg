@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="120" viewBox="0 0 640 120">
+  <rect width="640" height="120" rx="16" fill="#ffffff" stroke="#d6d0c7"/>
+  <g transform="translate(20 20)">
+    <rect width="80" height="80" rx="20" fill="#f2f0ec" stroke="#d6d0c7"/>
+    <circle cx="40" cy="40" r="22" fill="#1f6f6d"/>
+    <rect x="38" y="26" width="4" height="28" rx="2" fill="#ffffff"/>
+    <rect x="26" y="38" width="28" height="4" rx="2" fill="#ffffff"/>
+  </g>
+  <text x="130" y="62" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#1b1b1b">Namibia EMR</text>
+  <text x="130" y="88" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#4a4a4a">Digital Health</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#ffffff" stroke="#d6d0c7"/>
+  <rect x="8" y="8" width="16" height="48" fill="#003580"/>
+  <rect x="24" y="8" width="16" height="48" fill="#d21034"/>
+  <rect x="40" y="8" width="16" height="48" fill="#009543"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1b1b1b">NA</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="160" viewBox="0 0 520 320">
+  <rect width="260" height="160" rx="26" fill="#ffffff" stroke="#d6d0c7"/>
+  <circle cx="120" cy="160" r="70" fill="#009543"/>
+  <rect x="108" y="118" width="24" height="84" fill="#ffffff"/>
+  <rect x="84" y="148" width="72" height="24" fill="#ffffff"/>
+  <text x="220" y="152" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#1b1b1b">Ministry of</text>
+  <text x="220" y="190" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#1b1b1b">Health</text>
+</svg>

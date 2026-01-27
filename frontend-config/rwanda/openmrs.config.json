@@ -1,0 +1,939 @@
+{
+  "@openmrs/esm-framework": {
+    "locale": "en",
+    "fallbackLocale": "en"
+  },
+  "@openmrs/esm-translations": {
+    "locale": "en",
+    "fallbackLocale": "en"
+  },
+  "@openmrs/esm-service-queues-app": {
+    "concepts": {
+      "priorityConceptSetUuid": "2260a79e-f391-40f7-9eba-2e0e67028392",
+      "defaultPriorityConceptUuid": "80cd8f8c-5d82-4cdc-b96e-a6addeb94b7f",
+      "emergencyPriorityConceptUuid": "037446f4-adfc-40b3-928c-a39a4826b1bf",
+      "serviceConceptSetUuid": "d7bd4cc0-90b1-4f22-90f2-ab7fde936727",
+      "statusConceptSetUuid": "9484732b-bcaf-429e-86cb-d6cf3da34211",
+      "defaultStatusConceptUuid": "167407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "defaultTransitionStatus": "167408AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "historicalObsConceptUuid": ["161643AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+    },
+    "priorityConfigs": [
+      {
+        "conceptUuid": "037446f4-adfc-40b3-928c-a39a4826b1bf",
+        "tagClassName": "tag",
+        "tagType": "red"
+      },
+      {
+        "conceptUuid": "80cd8f8c-5d82-4cdc-b96e-a6addeb94b7f",
+        "tagClassName": "tag",
+        "tagType": "green"
+      },
+      {
+        "conceptUuid": "ef5718cd-d6d5-4fcf-bb82-cc4afaa90603",
+        "tagClassName": "tag",
+        "tagType": "gray"
+      }
+    ],
+    "visitQueueNumberAttributeUuid": "c61ce16f-272a-41e7-9924-4c555d0932c5",
+    "queueTables": {
+      "columnDefinitions": [
+        {
+          "id": "serve-patient",
+          "columnType": "extension",
+          "header": "Serve Patient"
+        }
+      ],
+      "tableDefinitions": [
+        {
+          "columns": [
+            "patient-name",
+            "queue-number",
+            "coming-from",
+            "priority",
+            "status",
+            "queue",
+            "wait-time",
+            "serve-patient",
+            "actions"
+          ]
+        }
+      ]
+    },
+    "showQueueTableTab": false,
+    "defaultIdentifierTypes": [
+      "05ee9cf4-7242-4a17-b4d4-00f707265c8a",
+      "f85081e2-b4be-4e48-b3a4-7994b69bb101"
+    ],
+    "defaultFacilityUrl": "/ws/rest/v1/kenyaemr/default-facility",
+    "Translation overrides": {
+      "en": {
+        "move": "Assign to next queue"
+      }
+    }
+  },
+  "@openmrs/esm-dispensing-app": {
+    "valueSets": {
+      "reasonForPause": {
+        "uuid": "2462a9d7-61fb-4bf5-9359-aedecb8d03cb"
+      },
+      "reasonForClose": {
+        "uuid": "2462a9d7-61fb-4bf5-9359-aedecb8d03cb"
+      }
+    },
+    "dispenseBehavior": {
+      "restrictTotalQuantityDispensed": true,
+      "allowModifyingPrescription": false
+    },
+    "enableStockDispense": true,
+    "validateBatch": true,
+    "Display conditions": {
+      "privileges": ["o3: View Dispensing Dashboard"]
+    },
+    "extensionSlots": {
+      "prescription-action-button-slot": {
+        "remove": ["dispense-action-button"],
+        "add": ["billing-test-order-action"]
+      }
+    },
+    "endVisitOnDispense": {
+      "enabled": true,
+      "visitTypesUuids": ["3371a4d4-f66f-4454-a86d-92c7b3da990c"]
+    }
+  },
+  "@openmrs/esm-appointments-app": {
+    "concepts": {
+      "visitQueueNumberAttributeUuid": "c61ce16f-272a-41e7-9924-4c555d0932c5"
+    },
+    "includePhoneNumberInExcelSpreadsheet": true,
+    "allowAllDayAppointments": true,
+    "showServiceQueueFields": true,
+    "defaultFacilityUrl": "/ws/rest/v1/kenyaemr/default-facility",
+    "patientIdentifierType": "Unique Patient Number",
+    "showUnscheduledAppointmentsTab": false,
+    "appointmentStatuses": ["Scheduled"],
+    "appointmentTypes": ["Scheduled"],
+    "extensionSlots": {
+      "scheduled-appointments-panels-slot": {
+        "remove": ["cancelled-appointments-panel"],
+        "configure": {
+          "expected-appointments-panel": {
+            "showForPastDate": true,
+            "showForFutureDate": true
+          },
+          "completed-appointments-panel": {
+            "showForPastDate": true,
+            "showForFutureDate": false
+          }
+        }
+      }
+    },
+    "checkInButton": {
+      "enabled": false
+    },
+    "checkOutButton": {
+      "enabled": false
+    }
+  },
+  "@openmrs/esm-form-entry-app": {
+    "customEncounterDatetime": true
+  },
+  "@openmrs/esm-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "remove": ["home-appointments"]
+      }
+    },
+    "defaultDashboardPerRole": {
+      "o3: Adherence counsellor": "facility-dashboard",
+      "o3: Cashier/Accountant": "accounting",
+      "o3: Community Pharmacist": "facility-dashboard",
+      "o3: Dentist": "facility-dashboard",
+      "o3: Doctors/Clinicians/Specialists": "facility-dashboard",
+      "o3: Finance Administrator": "accounting",
+      "o3: Health Record Officer": "reports",
+      "o3: HTS Counsellor": "facility-dashboard",
+      "o3: ICT Officer": "facility-dashboard",
+      "o3: Insurance Agent": "accounting",
+      "o3: Laboratory Technician": "laboratory",
+      "o3: Linkage Services": "facility-dashboard",
+      "o3: Mortician": "mortuary",
+      "o3: Nurse": "facility-dashboard",
+      "o3: Nutritionist": "facility-dashboard",
+      "o3: Occupational Therapist": "facility-dashboard",
+      "o3: Orthopedics": "facility-dashboard",
+      "o3: Pathologist": "mortuary",
+      "o3: Peer Eductor/Mentor Mother": "facility-dashboard",
+      "o3: Pharmacist": "pharmacy",
+      "o3: Physiotherapist": "facility-dashboard",
+      "o3: Public Health Officer/Surveillance Officer": "facility-dashboard",
+      "o3: Radiologist": "imaging-orders",
+      "o3: RDE Clerk": "facility-dashboard",
+      "o3: Receptionist/Registration": "registration",
+      "o3: Social Worker": "facility-dashboard",
+      "o3: Stock Controller/Manager": "facility-dashboard",
+      "o3: System Administrator": "facility-dashboard",
+      "o3: Triage Nurse": "facility-dashboard"
+    }
+  },
+  "@openmrs/esm-laboratory-app": {
+    "enableReviewingLabResultsBeforeApproval": false,
+    "extensionSlots": {
+      "tests-ordered-actions-slot": {
+        "remove": ["pick-lab-request-action"]
+      }
+    },
+    "Display conditions": {
+      "privileges": ["o3: View Laboratory Dashboard"]
+    }
+  },
+  "@openmrs/esm-patient-immunizations-app": {
+    "sequenceDefinitions": [
+      {
+        "vaccineConceptUuid": "783AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "Birth Dose at Birth or within 2 weeks",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "1st Dose at 6 weeks",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceNumber": 3
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 4
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "1422AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd Dose",
+            "sequenceNumber": 3
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "83531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose at 6 weeks",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 3
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "162586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "at 6 months",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "at 9 months",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "at 18 months",
+            "sequenceNumber": 3
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "166703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st at 6 months",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd at 7 months",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd at 9 months",
+            "sequenceNumber": 3
+          },
+          {
+            "sequenceLabel": "4th at 24 months",
+            "sequenceNumber": 4
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "82215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose at 6 weeks",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 3
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "5864AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "at 9 months(Intramuscular left upper deltoid)",
+            "sequenceNumber": 1
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "86022AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "at 9 months(subcutaneous/Intramuscular)",
+            "sequenceNumber": 1
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "159708AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose at 10 years for girls",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose 6 months after 1st Dose",
+            "sequenceNumber": 2
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "86339AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "Vitamin A at 6 months(100,000 IU)",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "Vitamin A at 12 months(1 year)(200,000 IU)",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "Vitamin A at 18 months(1.5 years)(200,000 IU)",
+            "sequenceNumber": 3
+          },
+          {
+            "sequenceLabel": "Vitamin A at 24 months(2 years)(200,000 IU)",
+            "sequenceNumber": 4
+          },
+          {
+            "sequenceLabel": "Vitamin A at 30 months(2.5 years)(200,000 IU)",
+            "sequenceNumber": 5
+          },
+          {
+            "sequenceLabel": "Vitamin A at 36 months(3 years)(200,000 IU)",
+            "sequenceNumber": 6
+          },
+          {
+            "sequenceLabel": "Vitamin A at 42 months(3.5 years)(200,000 IU)",
+            "sequenceNumber": 7
+          },
+          {
+            "sequenceLabel": "Vitamin A at 48 months(4 years)(200,000 IU)",
+            "sequenceNumber": 8
+          },
+          {
+            "sequenceLabel": "Vitamin A at 54 months(4.5 years)(200,000 IU)",
+            "sequenceNumber": 9
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "886AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "At birth(intra-dermal left forearm)",
+            "sequenceNumber": 1
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose at 6 weeks",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 3
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "781AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose at 6 weeks",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 3
+          }
+        ]
+      },
+      {
+        "vaccineConceptUuid": "5261AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "sequences": [
+          {
+            "sequenceLabel": "1st Dose at 6 weeks",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "2nd Dose at 10 weeks",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "3rd Dose at 14 weeks",
+            "sequenceNumber": 3
+          }
+        ]
+      }
+    ],
+    "Translation overrides": {
+      "en": {
+        "lotNumber": "Batch Number",
+        "manufacturer": "Dosage"
+      }
+    }
+  },
+  "@openmrs/esm-patient-banner-app": {
+    "contactAttributeTypes": [
+      "b2c38640-2603-4629-aebd-3b54f33f1e3a",
+      "94614350-84c8-41e0-ac29-86bc107069be",
+      "342a1d39-c541-4b29-8818-930916f4c2dc",
+      "830bef6d-b01f-449d-9f8d-ac0fede8dbd3"
+    ],
+    "Display conditions": {
+      "privileges": ["o3: View Patient Banner"]
+    },
+    "extensionSlots": {
+      "patient-actions-slot": {
+        "configure": {
+          "delete-visit-buttont": {
+            "Display conditions": {
+              "privileges": ["o3: Delete Active Visit"]
+            }
+          },
+          "edit-patient-details-button": {
+            "Display conditions": {
+              "privileges": ["o3: Edit Patient"]
+            }
+          },
+          "mark-patient-deceased-button": {
+            "Display conditions": {
+              "privileges": ["o3: Mark Patient As Alive/Dead"]
+            }
+          }
+        }
+      }
+    },
+    "excludePatientIdentifierCodeTypes": {
+      "uuids": [
+        "49af6cdc-7968-4abb-bf46-de10d7f4859f",
+        "dfacd928-0370-4315-99d7-6ec1c9f7ae76",
+        "8d793bee-c2cc-11de-8d13-0010c6dffd0f",
+        "8d79403a-c2cc-11de-8d13-0010c6dffd0f",
+        "b4d66522-11fc-45c7-83e3-39a1af21ae0d",
+        "05ee9cf4-7242-4a17-b4d4-00f707265c8a",
+        "0691f522-dd67-4eeb-92c8-af5083baf338",
+        "d8ee3b8c-a8fc-4d6b-af6a-9423be5f8906",
+        "f85081e2-b4be-4e48-b3a4-7994b69bb101",
+        "1dc8b419-35f2-4316-8d68-135f0689859b",
+        "8f842498-1c5b-11e8-accf-0ed5f89f718b",
+        "e6af3782-1cb3-11e8-accf-0ed5f89f718b",
+        "9aedb9ae-1cbd-11e8-accf-0ed5f89f718b",
+        "c95bacd2-3847-11e9-b210-d663bd873d93",
+        "09ebf4f9-b673-4d97-b39b-04f94088ba64",
+        "ac64e5cb-e3e2-4efa-9060-0dd715a843a1",
+        "5065ae70-0b61-11ea-8d71-362b9e155667",
+        "b3d6de9f-f215-4259-9805-8638c887e46b",
+        "b7bfefd0-239b-11e9-ab14-d663bd873d93",
+        "e1e80b5c-6d7e-11ea-bc55-0242ac130003",
+        "be9beef6-aacc-4e1f-ac4e-5babeaa1e303",
+        "f2b0c94f-7b2b-4ab0-aded-0d970f88c063",
+        "b51ffe55-3e76-44f8-89a2-14f5eaf11079",
+        "c6552b22-f191-4557-a432-1f4df872d473",
+        "9a260a8c-b94d-11eb-8529-0242ac130003",
+        "6428800b-5a8c-4f77-a285-8d5f6174e5fb",
+        "68449e5a-8829-44dd-bfef-c9c8cf2cb9b2",
+        "1c7d0e5b-2068-4816-a643-8de83ab65fbf",
+        "ca125004-e8af-445d-9436-a43684150f8b",
+        "fd52829a-75d2-4732-8e43-4bff8e5b4f1a",
+        "5aa75418-75f8-4ad7-a7d8-8a24f6d3a2bb",
+        "e5e9a994-12e2-42c3-9c02-5abdc0fe40e8",
+        "52c3c0c3-05b8-4b26-930e-2a6a54e14c90"
+      ]
+    }
+  },
+  "@openmrs/esm-patient-chart-app": {
+    "extensionSlots": {
+      "patient-info-slot": {
+        "configure": {
+          "patient-vitals-info": {
+            "Display conditions": {
+              "privileges": [
+                "o3: View Patient Chart Vitals & Biometrics Dashboard"
+              ]
+            }
+          }
+        }
+      },
+      "patient-chart-summary-dashboard-slot": {
+        "remove": [
+          "biometrics-overview-widget",
+          "vitals-overview-widget",
+          "allergies-details-widget",
+          "immunization-overview-widget",
+          "active-medications-widget",
+          "conditions-overview-widget",
+          "past-medications-widget"
+        ],
+        "add": [],
+        "configure": {
+          "layoutMode": "anchored"
+        },
+        "order": [
+          "ewf-homepage-dashboard-link",
+          "charts-summary-dashboard",
+          "ewf-clinical-encounter-link",
+          "ewf-laboratory-dashboard-link",
+          "ewf-radiology-and-imaging-dashboard-link",
+          "ewf-pharmacy-dashboard-link",
+          "ewf-procedures-dashboard-link",
+          "ewf-admissions-dashboard-link",
+          "hiv-care-and-treatment-dashboard-link"
+        ]
+      },
+      "action-menu-patient-chart-items-slot": {
+        "order": [
+          "order-basket-action-menu",
+          "clinical-form-action-menu",
+          "visit-note-nav-button"
+        ],
+        "configure": {
+          "clinical-form-action-menu": {
+            "Display conditions": {
+              "privileges": ["o3: View Patient Chart Forms Dashboard"]
+            }
+          },
+          "visit-note-nav-button": {
+            "Display conditions": {
+              "privileges": ["o3: View Patient Chart Notes Dashboard"]
+            }
+          },
+          "order-basket-action-menu": {
+            "Display conditions": {
+              "privileges": ["o3: View Patient Chart Orders Basket"]
+            }
+          }
+        }
+      }
+    },
+    "showExtraVisitAttributesSlot": true,
+    "showServiceQueueFields": false,
+    "isDHAWorkflow": true,
+    "showUpcomingAppointments": true,
+    "visitQueueNumberAttributeUuid": "c61ce16f-272a-41e7-9924-4c555d0932c5",
+    "visitAttributeTypes": [],
+    "defaultFacilityUrl": "/ws/rest/v1/kenyaemr/default-facility",
+    "logo": {
+      "src": "/openmrs/spa/rwanda-primary-logo.svg"
+    },
+    "Translation overrides": {
+      "en": {
+        "endActiveVisit": "Check out",
+        "addVisit": "Check in",
+        "startAVisit": "Check in",
+        "endAVisit": "Check out",
+        "Vitals & Biometrics dashboard": "Vitals & Anthropometric",
+        "vitalsAndBiometrics": "Vitals & Anthropometric",
+        "visitType_title": "Department"
+      }
+    },
+    "notesConceptUuids": [
+      "162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "160430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    ]
+  },
+  "@openmrs/esm-patient-forms-app": {
+    "customFormsUrl": "/ws/rest/v1/kenyaemr/forms?patientUuid=${patientUuid}&visitUuid=${visitUuid}"
+  },
+  "@openmrs/esm-patient-tests-app": {
+    "showReferenceNumberField": false,
+    "resultsViewerConcepts": [
+      {
+        "conceptUuid": "9a6f10d6-7fc5-4fb7-9428-24ef7b8d01f7",
+        "defaultOpen": false
+      }
+    ],
+    "labTestsWithOrderReasons": [
+      {
+        "labTestUuid": "856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "1259AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "163718AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "f87f344a-62de-45ac-9cc0-b5bed81c289e",
+          "bb9780b3-4f44-42fd-9e94-3958d36d106f",
+          "167391AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "e299c5c6-5dc7-4977-9b9a-516252d4d582"
+        ]
+      },
+      {
+        "labTestUuid": "1030AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "1040AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "1326AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "844AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "162082AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      },
+      {
+        "labTestUuid": "163722AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "164460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "164860AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      },
+      {
+        "labTestUuid": "164860AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "167390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      },
+      {
+        "labTestUuid": "730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "167390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      },
+      {
+        "labTestUuid": "5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "167390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      },
+      {
+        "labTestUuid": "657AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "required": true,
+        "orderReasons": [
+          "167390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      },
+      {
+        "labTestUuid": "d0a3677f-3b3a-404c-9010-6ec766d7072e",
+        "required": true,
+        "orderReasons": [
+          "167390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167387AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "160740AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "167527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        ]
+      }
+      
+    ],
+    "orders": {
+      "labOrderableConcepts": ["9a6f10d6-7fc5-4fb7-9428-24ef7b8d01f7"],
+      "careSettingUuid": "6f0c9a92-6f24-11e3-af88-005056821db0"
+    }
+  },
+  "@openmrs/esm-patient-medications-app": {
+    "maxDispenseDurationInDays": 365
+  },
+  "@openmrs/esm-patient-notes-app": {
+    "visitNoteConfig": {
+      "encounterTypeUuid": "465a92f2-baf8-42e9-9612-53064be868e8",
+      "clinicianEncounterRole": "a0b03050-c99b-11e0-9572-0800200c9a66"
+    }
+  },
+  "@openmrs/esm-patient-orders-app": {
+    "enableReviewingLabResultsBeforeApproval": false,
+    "showReferenceNumberField": false,
+    "orderEncounterType": "7df67b83-1b84-4fe2-b1b7-794b4e9bfcc3",
+    "extensionSlots": {
+      "order-basket-slot": {
+        "configure": {
+          "drug-order-panel": {
+            "Display conditions": {
+              "privileges": ["o3: View Medication Order Form"]
+            }
+          },
+          "lab-order-panel": {
+            "Display conditions": {
+              "privileges": ["o3: View Test Order Form"]
+            }
+          },
+          "procedures-order-panel": {
+            "Display conditions": {
+              "privileges": ["o3: View Procedure Order"]
+            }
+          },
+          "imaging-order-panel": {
+            "Display conditions": {
+              "privileges": ["o3: View Imaging Order Form"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "@openmrs/esm-patient-vitals-app": {
+    "vitals": {
+      "useFormEngine": true,
+      "formName": "Record Triage Details",
+      "formUuid": "37f6bd8d-586a-4169-95fa-5781f987fe62",
+      "encounterTypeUuid": "d1059fb9-a079-4feb-a749-eedd709ae542"
+    },
+    "concepts": {
+      "generalPatientNoteUuid": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "Translation overrides": {
+      "en": {
+        "vitalsAndBiometrics": "Vitals & Anthropometrics",
+        "Vitals & Biometrics": "Vitals & Anthropometrics",
+        "biometricDisplayed": "Anthropometrics displayed",
+        "biometrics": "Anthropometrics"
+      }
+    }
+  },
+  "@openmrs/esm-primary-navigation-app": {
+    "logo": {
+      "src": "/openmrs/spa/rwanda-primary-logo.svg",
+      "link": "${openmrsSpaBase}/home/facility-dashboard"
+    },
+    "extensionSlots": {
+      "app-menu-slot": {
+        "remove": [
+          "system-administration-app-menu-link",
+          "queue-screen-link",
+          "forms-app-link",
+          "dispensing-link"
+        ]
+      },
+      "top-nav-actions-slot": {
+        "configure": {
+          "patient-search-icon": {
+            "Display conditions": {
+              "privileges": ["o3: Search Patient"]
+            }
+          },
+          "add-patient-action": {
+            "Display conditions": {
+              "privileges": ["o3: Register Patient"]
+            }
+          }
+        },
+        "order": [
+          "patient-search-icon",
+          "add-patient-action",
+          "implementer-tools-button",
+          "user-menu-button",
+          "kenyaemr-modules-link"
+        ]
+      },
+      "homepage-dashboard-slot": {
+        "remove": [
+          "clinical-appointments-dashboard-link",
+          "referrals-link",
+          "service-queues-dashboard-link"
+        ],
+        "add": [],
+        "configure": {
+          "facility-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View DHA Facility Dashboard"]
+            }
+          },
+          "registration-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: Register Dashboard"]
+            }
+          },
+          "triage-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Triage Dashboard"]
+            }
+          },
+          "consultation-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Consultation Dashboard"]
+            }
+          },
+          "mch-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View MCH Dashboard"]
+            }
+          },
+          "ward-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Ward Dashboard"]
+            }
+          },
+          "procedure-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Procedure Dashboard"]
+            }
+          },
+          "radiology-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Imaging Dashboard"]
+            }
+          },
+          "laboratory-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Laboratory Dashboard"]
+            }
+          },
+          "pharmacy-homepage-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Pharmacy Dashboard"]
+            }
+          },
+          "accounting-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Accounting Dashboard"]
+            }
+          },
+          "reports-homepage-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Reports Dashboard"]
+            }
+          },
+          "mortuary-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["o3: View Mortuary Dashboard"]
+            }
+          }
+        },
+        "order": [
+          "facility-dashboard-link",
+          "registration-dashboard-link",
+          "triage-dashboard-link",
+          "consultation-dashboard-link",
+          "mch-dashboard-link",
+          "ward-dashboard-link",
+          "procedure-dashboard-link",
+          "radiology-dashboard-link",
+          "laboratory-dashboard-link",
+          "pharmacy-homepage-dashboard-link",
+          "accounting-dashboard-link",
+          "reports-homepage-dashboard-link",
+          "mortuary-dashboard-link"
+        ]
+      },
+      "patient-chart-dashboard-slot": {
+        "remove": [
+          "patient-appointments-summary-dashboard",
+          "allergies-summary-dashboard",
+          "attachments-results-summary-dashboard",
+          "conditions-summary-dashboard",
+          "encounters-summary-dashboard",
+          "patient-orders-summary-dashboard",
+          "immunization-summary-dashboard",
+          "programs-summary-dashboard",
+          "medications-summary-dashboard",
+          "results-summary-dashboard",
+          "test-results-summary-dashboard"
+        ]
+      }
+    }
+  },
+  "@openmrs/esm-styleguide": {
+    "Brand color #1": "#183D1A",
+    "Brand color #2": "#1D491F",
+    "Brand color #3": " #2C6D2F",
+    "implementationName": "Home"
+  },
+  "@openmrs/esm-stock-management-app": {
+    "Display conditions": {
+      "privileges": ["o3: Manage Stocks"]
+    }
+  },
+  "@openmrs/esm-ward-app": {
+    "Display conditions": {
+      "privileges": ["o3: View Ward Dashboard"]
+    }
+  },
+  "core": {
+    "Translation overrides": {
+      "en": {
+        "address1": "Postal Address",
+        "address2": "Landmark",
+        "address4": "Ward",
+        "address5": "Sub-location",
+        "address6": "Location",
+        "city": "Village",
+        "district": "County",
+        "state": "Sub county"
+      }
+    }
+  },
+  "@openmrs/esm-app-shell": {
+    "Enabled feature flags": ["mpiFlag", "rde", "healthInformationExchange"]
+  },
+  "@openmrs/esm-patient-attachments-app": {
+    "maxFileSize": 5
+  }
+}
