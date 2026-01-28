@@ -17,3 +17,9 @@ node_modules/
 #vscode
 .vscode/settings.json
 .qodo
+# Exclude build artifacts and archives
+modules/
+frontend/
+*.zip
+*.tgz
+*.tar.gz
